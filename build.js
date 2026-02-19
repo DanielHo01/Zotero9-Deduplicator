@@ -1,17 +1,24 @@
 /**
  * Zotero Plugin Build Script
- * Uses esbuild to bundle the plugin
+ * Uses esbuild to bundle the plugin and create .xpi file
  */
 const esbuild = require('esbuild');
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const srcDir = path.join(__dirname, 'src');
 const distDir = path.join(__dirname, 'dist');
+const xpiFile = path.join(__dirname, 'Zotero9-Deduplicator.xpi');
 
 // Ensure dist directory exists
 if (!fs.existsSync(distDir)) {
   fs.mkdirSync(distDir, { recursive: true });
+}
+
+// Clean previous build
+if (fs.existsSync(xpiFile)) {
+  fs.unlinkSync(xpiFile);
 }
 
 // Build plugin.js bundle
@@ -59,4 +66,16 @@ if (fs.existsSync(localeSrc)) {
   });
 }
 
-console.log('\n✓ Build complete! Output in dist/');
+console.log('\n✓ Build complete!');
+
+// Create .xpi file (ZIP format)
+console.log('Creating .xpi file...');
+try {
+  // Use PowerShell to create zip file (Windows)
+  const zipCommand = `powershell -Command "Compress-Archive -Path 'dist/*' -DestinationPath '${xpiFile}' -Force"`;
+  execSync(zipCommand, { stdio: 'pipe' });
+  console.log(`✓ XPI created: ${xpiFile}`);
+} catch (err) {
+  console.error('Warning: Could not create .xpi file:', err.message);
+  console.log('You can manually zip dist/ folder to create .xpi file');
+}
