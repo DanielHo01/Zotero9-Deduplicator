@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extensionName__",
+  "version": "1.0.0",
+  "description": "__MSG_extensionDescription__",
+  "author": "Daniel Ho",
+  "homepage": "https://github.com/DanielHo01/Zotero9-Deduplicator",
+  "license": "MIT",
+  "icons": {
+    "48": "icons/icon.png"
+  },
+  "resources": {
+    "icons": "icons/*"
+  },
+  "preferences": {
+    "merge-strategy": {
+      "type": "string",
+      "default": "newest",
+      "enum": ["newest", "oldest", "longest-author"],
+      "description": "Primary item selection strategy"
+    },
+    "skip-preview": {
+      "type": "boolean",
+      "default": false,
+      "description": "Skip preview and merge directly"
+    },
+    "batch-size": {
+      "type": "int",
+      "default": 50,
+      "description": "Number of items to process per batch"
+    }
+  },
+  "actions": [
+    {
+      "name": "Smart Merge",
+      "label": "__MSG_menu.smartMerge__",
+      "description": "Manually select and merge duplicate items"
+    },
+    {
+      "name": "Bulk Merge",
+      "label": "__MSG_menu.bulkMerge__",
+      "description": "Automatically merge all duplicates"
+    }
+  ]
+}

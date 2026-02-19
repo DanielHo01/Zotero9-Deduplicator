@@ -1,0 +1,19 @@
+{
+  "extensionName": "Zotero9-Deduplicator",
+  "extensionDescription": "Zotero 8/9 高性能重复文献合并插件",
+  "menu": {
+    "smartMerge": "智能合并 (Smart Merge)",
+    "bulkMerge": "批量合并 (Bulk Merge)"
+  },
+  "dialog": {
+    "selectStrategy": "选择主条目策略",
+    "newest": "最新条目",
+    "oldest": "最旧条目",
+    "longestAuthor": "作者最多",
+    "merging": "正在合并...",
+    "complete": "合并完成！",
+    "noDuplicates": "未发现重复条目",
+    "processed": "已处理",
+    "remaining": "剩余"
+  }
+}

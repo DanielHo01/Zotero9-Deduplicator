@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Zotero9-Deduplicator",
+  "version": "1.0.0",
+  "description": "Zotero 8/9 高性能重复文献合并插件",
+  "author": "Daniel Ho",
+  "homepage": "https://github.com/DanielHo01/Zotero9-Deduplicator",
+  "license": "MIT",
+  "icons": {
+    "48": "icons/icon.png"
+  },
+  "main": "src/index.ts",
+  "dependencies": {
+    "zotero-plugin-toolkit": "^3.0.0"
+  },
+  "scripts": {
+    "build": "zotero-plugin-toolkit build",
+    "start": "zotero-plugin-toolkit run"
+  },
+  "engines": {
+    "zotero": ">=8.0.0"
+  }
+}
